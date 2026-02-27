@@ -5,8 +5,8 @@ function textOfTheGame(tag, text) {
     let campo = document.querySelector(tag);
     campo.innerHTML = text;
 }
-textOfTheGame('h1','Jogo de Adivinhação');
-textOfTheGame('p','Digite um número de 1 a 500 para ser adivinhado!!:');
+textOfTheGame('h1','Number Guessing Game');
+textOfTheGame('p','Enter a number from 1 to 500 to be guessed:');
 
 function verifyPlayerGuess() {       
     function tips () {
