@@ -8,18 +8,23 @@ function textOfTheGame(tag, text) {
 textOfTheGame('h1','Number Guessing Game');
 textOfTheGame('p','Enter a number from 1 to 500 to be guessed:');
 
+function userActualAttempt (kick) {
+ document.getElementById("guessUser").innerHTML = `Seu chute atual é: ${kick}`;
+}
+
 function verifyPlayerGuess() {       
     function tips () {
     if(secretNumber > kick) {
-        textOfTheGame('h3', `Voce errou!! <br> O número secreto é maior do que seu chute atual: ${kick}`);
+        textOfTheGame('h3', `Voce errou!! <br> O número secreto é maior.`);
     } else if(secretNumber < kick) {
-        textOfTheGame('h3',`Voce errou!! <br> O número secreto é menor do que seu chute atual: ${kick}`);
+        textOfTheGame('h3',`Voce errou!! <br> O número secreto é menor.`);
     } else {
         return null
     }
 }
 
-    let kick = document.querySelector('input').value
+    let kick = parseInt(document.querySelector('input').value);
+    userActualAttempt(kick);
     if(kick == secretNumber) {
        let conditionAttempts = attempts > 1? 'tentativas' : 'tentativa';
        let messageAttempts  = `Voce acertou!! O número secreto é: ${secretNumber}, e o jogador finalizou o jogo com: ${attempts} ${conditionAttempts}`;
@@ -27,8 +32,6 @@ function verifyPlayerGuess() {
        document.getElementById('retry').removeAttribute('disabled');
     } else {
        clearInput();
-       //let attempt = document.getElementById("attempt");
-       //attempt.innerHTML = `Tentativa atual: ${attempt}`;
     }
     attempts ++;
     tips();
@@ -63,6 +66,8 @@ function clearTexts() {
     document.querySelector('h3').innerHTML = '';
     document.getElementById('retry').setAttribute('disabled', true);
 }
+
+
 
 
 

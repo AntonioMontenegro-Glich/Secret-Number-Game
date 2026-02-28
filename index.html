@@ -23,11 +23,14 @@
                     <h3 id="attempt"></h3>
                     <p class="paragraph__text"></p>
                 </div>
-                <input type="number" min="1" max="10" class="container__input">
+                <input id="playerGuess" type="number" min="1" max="10" class="container__input">
                 <div class="guess container__buttons">
                     <button onclick="verifyPlayerGuess()" class="container__button">Guess</button>
                     <button onclick="retryGame()" id="retry" class="container__button" disabled>New Game</button>
                     <h2></h2>
+                </div>
+                <div>
+                    <p id="guessUser"></p>
                 </div>
             </div>
         </div>
