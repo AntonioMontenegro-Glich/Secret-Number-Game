@@ -18,24 +18,27 @@
         <div class="container__content">
             <div class="container__infos">
                 <div class="container__text">
-                    <h1></h1>
-                    <h3></h3>
-                    <h3 id="attempt"></h3>
+                    <h1 id="title"></h1>
                     <p class="paragraph__text"></p>
                 </div>
+
                 <input id="playerGuess" type="number" min="1" max="10" class="container__input">
-                <div class="guess container__buttons">
+                <div id="successMessage" class="successMessage"></div>
+
+              <div class="guess container__buttons">
                     <button onclick="verifyPlayerGuess()" class="container__button">Guess</button>
                     <button onclick="retryGame()" id="retry" class="container__button" disabled>New Game</button>
-                    <h2></h2>
-                </div>
-                <div>
+                    <h2 id="result"></h2>
+              </div>
+                <div class="feedback">
                     <p id="guessUser"></p>
+                    <div class="divider"></div>
+                    <p id="message"></p>
                 </div>
             </div>
         </div>
     </div>
-    <script src="app.js" defer></script>
+<script src="app.js" defer></script>
 </body>
 
 </html>

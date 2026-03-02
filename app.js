@@ -5,19 +5,19 @@ function textOfTheGame(tag, text) {
     let campo = document.querySelector(tag);
     campo.innerHTML = text;
 }
-textOfTheGame('h1','Number Guessing Game');
-textOfTheGame('p','Enter a number from 1 to 500 to be guessed:');
+textOfTheGame('#title','Number Guessing Game');
+textOfTheGame('.paragraph__text','Enter a number from 1 to 500 to be guessed:');
 
 function userActualAttempt (kick) {
- document.getElementById("guessUser").innerHTML = `Seu chute atual é: ${kick}`;
+ document.getElementById("guessUser").innerHTML = `Chute atual: ${kick}`;
 }
 
 function verifyPlayerGuess() {       
-    function tips () {
+    function tips (kick) {
     if(secretNumber > kick) {
-        textOfTheGame('h3', `Voce errou!! <br> O número secreto é maior.`);
+        textOfTheGame('#message', `Você errou!! O número secreto é maior.`);
     } else if(secretNumber < kick) {
-        textOfTheGame('h3',`Voce errou!! <br> O número secreto é menor.`);
+        textOfTheGame('#message',`Você errou!! O número secreto é menor.`);
     } else {
         return null
     }
@@ -25,16 +25,17 @@ function verifyPlayerGuess() {
 
     let kick = parseInt(document.querySelector('input').value);
     userActualAttempt(kick);
+
     if(kick == secretNumber) {
        let conditionAttempts = attempts > 1? 'tentativas' : 'tentativa';
-       let messageAttempts  = `Voce acertou!! O número secreto é: ${secretNumber}, e o jogador finalizou o jogo com: ${attempts} ${conditionAttempts}`;
-       textOfTheGame('h2',`${messageAttempts}`);
+       let messageAttempts  = `Você acertou!! O número secreto é: ${secretNumber}, e o jogador finalizou o jogo com: ${attempts} ${conditionAttempts}`;
+       textOfTheGame('#result',`${messageAttempts}`);
        document.getElementById('retry').removeAttribute('disabled');
     } else {
+       attempts ++;
        clearInput();
+       tips(kick);
     }
-    attempts ++;
-    tips();
     console.log(secretNumber);
     }
 
@@ -50,6 +51,7 @@ function generateRandomNumber() {
  }
 
 function retryGame() {
+    drawNumberList= [];
     secretNumber = generateRandomNumber();
     clearInput();
     clearTexts();
@@ -62,8 +64,9 @@ function clearInput() {
 }
 
 function clearTexts() {
-    document.querySelector('h2').innerHTML = '';
-    document.querySelector('h3').innerHTML = '';
+    document.getElementById('result').innerHTML = '';
+    document.getElementById('message').innerHTML = '';
+    document.getElementById('guessUser').innerHTML = '';
     document.getElementById('retry').setAttribute('disabled', true);
 }
 

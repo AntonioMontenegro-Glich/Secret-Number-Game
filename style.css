@@ -73,7 +73,7 @@ body::before {
 }
 
 .container__input {
-    width: 100%;
+    width: 60%;
     height: 72px;
     border-radius: 16px;
     background-color: #FFF;
@@ -87,16 +87,38 @@ body::before {
 
 .container__buttons {
     display: flex;
-    gap: 2em;
+    gap: 1rem;
+    width: 60%;
     margin-bottom: 1rem;
 }
 
-#guessUser {
-    margin-top: 1rem;
+#guessUser, #message {
+    display: flex;
+    align-items: center;
+    line-height: 1.2;
     font-family: 'Inter', sans-serif;
-    font-size: px;
-    padding: 0.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+ .feedback {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    font-size: 18px;
+}
+
+.divider {
+    width: 1px;
+    align-self: stretch;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(255,255,255,0.4),
+        transparent
+    );
 }
 
 h1 {
